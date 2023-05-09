@@ -47,7 +47,7 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     azure_rbac_enabled= true
   }
 
-}  
+ 
 
 # Windows Admin Profile
   windows_profile {
