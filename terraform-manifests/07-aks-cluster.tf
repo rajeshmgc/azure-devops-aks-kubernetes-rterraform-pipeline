@@ -30,7 +30,7 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
    } 
   }
 
-# Identity (System Assigned or Service Principal)
+# Identity (System Assigned or Service Principal1)
   identity { type = "SystemAssigned" }
 
 # Add On Profiles
