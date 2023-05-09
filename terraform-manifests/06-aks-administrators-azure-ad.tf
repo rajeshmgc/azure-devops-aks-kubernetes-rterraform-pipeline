@@ -6,16 +6,16 @@ resource "azuread_group" "aks_administrators" {
 }
 
 # Create an Azure Active Directory user
-resource "azuread_user" "k8s_user" {
-  display_name = "aksdev2"
-  password     = "MyStrongPassword123!"
-  user_principal_name = "aksdev2@rajeshmgcoutlook.onmicrosoft.com"
-}
+# resource "azuread_user" "k8s_user" {
+#   display_name = "aksdev2"
+#   password     = "MyStrongPassword123!"
+#   user_principal_name = "aksdev2@rajeshmgcoutlook.onmicrosoft.com"
+# }
 
-resource "azuread_group_member" "admin_group_member" {
-  group_object_id = azuread_group.aks_administrators.id
-  member_object_id = azuread_user.k8s_user.id
-}
+# resource "azuread_group_member" "admin_group_member" {
+#   group_object_id = azuread_group.aks_administrators.id
+#   member_object_id = azuread_user.k8s_user.id
+# }
 
 resource "azurerm_role_assignment" "k8-admins" {
   scope = azurerm_kubernetes_cluster.aks_cluster.id
