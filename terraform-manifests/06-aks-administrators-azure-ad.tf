@@ -16,10 +16,10 @@ resource "azuread_user" "k8s_user" {
   user_principal_name = "aksdev2@rajeshmgcoutlook.onmicrosoft.com"
 }
 
-resource "azuread_group_member" "admin_group_member" {
+/* resource "azuread_group_member" "admin_group_member" {
   group_object_id = azuread_group.aks_administrators.object_id
   member_object_id = azuread_user.k8s_user.object_id
-}
+} */
 
 resource "azurerm_role_assignment" "k8-admins" {
   scope = azurerm_kubernetes_cluster.aks_cluster.id
