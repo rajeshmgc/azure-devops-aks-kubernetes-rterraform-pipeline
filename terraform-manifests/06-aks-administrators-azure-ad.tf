@@ -12,7 +12,7 @@ resource "azuread_group" "aks_administrators" {
 # Create an Azure Active Directory user
 resource "azuread_user" "k8s_user" {
   display_name = "aksdev2"
-  password     = "*****"
+  password     = "MyStrongPassword@123"
   user_principal_name = "aksdev2@rajeshmgcoutlook.onmicrosoft.com"
 }
 
