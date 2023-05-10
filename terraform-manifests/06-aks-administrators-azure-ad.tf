@@ -3,18 +3,22 @@ resource "azuread_group" "aks_administrators" {
   display_name        = "${azurerm_resource_group.aks_rg.name}-administrators"
   description = "Azure AKS Kubernetes administrators for the ${azurerm_resource_group.aks_rg.name}-administrators cluster."
   security_enabled = true
+   members = [
+    azuread_user.k8s_user.object_id
+    # more users 
+   ]
 }
 
 # Create an Azure Active Directory user
 resource "azuread_user" "k8s_user" {
   display_name = "aksdev2"
-  password     = "MyStrongPassword123!"
+  password     = "*****"
   user_principal_name = "aksdev2@rajeshmgcoutlook.onmicrosoft.com"
 }
 
 resource "azuread_group_member" "admin_group_member" {
-  group_object_id = azuread_group.aks_administrators.id
-  member_object_id = azuread_user.k8s_user.id
+  group_object_id = azuread_group.aks_administrators.object_id
+  member_object_id = azuread_user.k8s_user.object_id
 }
 
 resource "azurerm_role_assignment" "k8-admins" {
